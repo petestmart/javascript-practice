@@ -63,3 +63,30 @@ const arr = [1, 2, 3];
 // == symbol.In this example, the values are the same since they are both 2, and the 
 // statement remains truthy despite the fact that one is a string and the other is a 
 // number.
+
+// What about each of these following…
+"2" + 2 == 4;
+2 + 2 == 4;
+
+console.log("2" + 2 == 4);
+console.log( 2 + 2 == 4 );
+console.log("2" + 2);
+console.log(2+2);
+
+// “2” + 2 == 4 equates to a falsy value.The == can be used to check if two values are 
+// both equal to each other regardless of their type.In this case, since the value on 
+// the left side of the equation contains a string and a number, the + symbol with 
+// concatenate the two values.Instead of adding the two numbers and equalling 4, the 
+// numbers are concatenated together and return a string of 22.  Since 22 is not equal 
+// to 4, the value is falsy.It’s also important to note that 22 is a string, but in this 
+// instance it does not play a role in whether or not the value is truthy or falsy since 
+// we are using == and not ===.
+
+// 2 + 2 == 4 equates to a truthy value.The == can be used to check if two values are 
+// both equal to each other regardless of their type.In this case, the value of the left 
+// side of the equation contains two numbers and zero strings, so the + symbol will add 
+// the two numbers together equalling 4.  Since the right side of the equation is equal
+//  to 4, the value is truthy.It is important to note that even though both sides of the 
+//  equation are numbers, the value would remain truthy even if one side was a string of 
+//  2 and the other side was a number of 2 since we are using == and not ===.
+
