@@ -90,3 +90,24 @@ console.log(2+2);
 //  equation are numbers, the value would remain truthy even if one side was a string of 
 //  2 and the other side was a number of 2 since we are using == and not ===.
 
+// Exercise #2
+
+// Given a string, reverse each word in the sentence “Welcome to this Javascript Guide!” 
+// so it would become “emocleW ot siht tpircsavaJ !ediuG”.
+
+function reverseWords (str) {
+        let splitString = str.split("");
+
+        let reverseArray = splitString.reverse();
+
+        let joinArray = reverseArray.join("");
+
+        let wordSplit = joinArray.split(" ");
+
+        let nextReverse = wordSplit.reverse();
+
+        let finalJoin = nextReverse.join(" ");
+
+        return finalJoin;
+
+}
