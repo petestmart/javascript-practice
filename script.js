@@ -28,18 +28,22 @@ function concatFooToBar(bar) {
 // Given an array of numbers, create toPalindrome method that creates a 
 // palindrome out of your array in the following way:
 
-let obj = {
-    toPalindrome: function(){
-        return
-    }
+let Palindrome = function(array) {
+    this.array = array;
+}
+
+Palindrome.toPalindrome = function () {
+    console.log("This will be a palindrome soon: " + this.array)
 }
 
 const arr = [1, 2, 3];
+// arr.toPalindrome();
 // const arr2 = arr.toPalindrome();
 // // [1,2,3,2,1]
 
 // const arr3 = arr2.toPalindrome();
 // // [1,2,3,2,1,2,3,2,1]
+
 
 
 // STRINGS //
@@ -69,9 +73,9 @@ const arr = [1, 2, 3];
 2 + 2 == 4;
 
 console.log("2" + 2 == 4);
-console.log( 2 + 2 == 4 );
+console.log(2 + 2 == 4);
 console.log("2" + 2);
-console.log(2+2);
+console.log(2 + 2);
 
 // “2” + 2 == 4 equates to a falsy value.The == can be used to check if two values are 
 // both equal to each other regardless of their type.In this case, since the value on 
@@ -95,19 +99,141 @@ console.log(2+2);
 // Given a string, reverse each word in the sentence “Welcome to this Javascript Guide!” 
 // so it would become “emocleW ot siht tpircsavaJ !ediuG”.
 
-function reverseWords (str) {
-        let splitString = str.split("");
+function reverseWords(str) {
+    let splitString = str.split("");
 
-        let reverseArray = splitString.reverse();
+    let reverseArray = splitString.reverse();
 
-        let joinArray = reverseArray.join("");
+    let joinArray = reverseArray.join("");
 
-        let wordSplit = joinArray.split(" ");
+    let wordSplit = joinArray.split(" ");
 
-        let nextReverse = wordSplit.reverse();
+    let nextReverse = wordSplit.reverse();
 
-        let finalJoin = nextReverse.join(" ");
+    let finalJoin = nextReverse.join(" ");
 
-        return finalJoin;
+    return finalJoin;
+}
+
+// INHERITENCE //
+
+// What is the difference between classical inheritance and prototypal inheritance?
+
+// Classical Inheritance & OOP with JS (YouTube Video LearnCode.academy)
+// link: https://www.youtube.com/watch?v=sWOXYDBbz0g
+
+// This function was copied from the notes in the video (the guy went to a link and grabbed this function from node.js)
+// This is the "inherit" function (ctor, superCtor) : (child, parent)
+// This function allows the child to inherit all of the functionality from the parent
+function inherits(ctor, superCtor) { 
+    ctor.super_ = superCtor;
+    ctor.prototype = Object.create(superCtor.prototype, {
+        constructor: {
+            value: ctor,
+            enumerable: false,
+            writable: true,
+            configurable: true
+        }
+    });
+};
+
+// Constructor/Master Module (Capitalize) - This is our class
+var Person = function(name) {
+    // this refers to the object that you are creating
+    this.name = name;
+}
+
+Person.prototype.sayName = function() {
+    console.log("Hi my name is " + this.name);
+}
+
+Person.prototype.shoutName = function() {
+    console.log("Hi my name is" + this.name + "!");
+}
+
+
+// This is creating copies of the above module
+// This is instantiation - Creating Instances of a module
+var john = new Person("john");
+var bobby = new Person("bobby");
+
+john.sayName(); // Hi my name is john
+bobby.sayName(); // Hi my name is bobby
+
+var Musician = function(name, instrument) {
+    //Below is our inherited class (aka Person)
+    Musician.super_.call(this, name);
+    this.instrument = instrument;
+}
+
+inherits(Musician, Person);
+
+Musician.prototype.getInstrument = function() {
+    console.log(this.instrument);
+}
+
+Musician.prototype.shoutName = function() {
+    console.log("Dude! My name is " + this.name + "!!!!");
+}
+
+var julia = new Musician("julia", "trombone");
+julia.sayName();
+julia.getInstrument();
+julia.shoutName(); // Dude! My name is ....
+
+// END CLASSICAL INHERITANCE VIDEO
+
+// Prototypal Pattern vs Classical OOP in JS (YouTube Video LearnCode.academy)
+// link: https://www.youtube.com/watch?v=doXpW5AD60Q
+
+// **Differences:
+// 1) No need to instantiate with "new" like you do in classical
+// 2) Prototypal you just make an object
+// -- Then use Object.create to create a new object with all of the properties of the parent
+// 3) Instead of prototype, you create the object and define each characteristic (ex: will.name = "Will";)
+
+// **Similarities
+// 1) Still use "this" when referencing values on the object
+
+
+var human = {
+    species: "human",
+    saySpecies: function() {
+        console.log(this.species);
+    },
+    sayName: function() {
+        console.log(this.name);
+    }
+};
+
+var musician = Object.create(human);
+musician.playInstrument = function() {
+    console.log("plays..." + this.instrument);
 
 }
+
+var will = Object.create(musician);
+will.name = "Will";
+will.instrument = "Drums";
+
+// Call functions
+will.sayName();
+will.playInstrument();
+will.saySpecies();
+// Redefine elements
+human.species = "homo sapiens";
+will.saySpecies();
+
+// METHOD (FUNCTION) //
+
+// Question #1
+// What will the following code output and why?
+
+var b = 1; 
+function outer() {
+    var b = 2 
+    function inner() {b++; var b=3; console.log(b)
+    } 
+    inner() 
+} 
+outer ();
