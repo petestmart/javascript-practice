@@ -28,16 +28,26 @@ function concatFooToBar(bar) {
 // Given an array of numbers, create toPalindrome method that creates a 
 // palindrome out of your array in the following way:
 
-let Palindrome = function(array) {
-    this.array = array;
-}
 
-Palindrome.toPalindrome = function () {
-    console.log("This will be a palindrome soon: " + this.array)
-}
-
+let palindrome = [];
 const arr = [1, 2, 3];
-// arr.toPalindrome();
+const arr2 = [1, 2, 3, 2, 1]
+
+function toPalindrome (array) {
+    for (let i=array.length-1; i>=0; i--) {
+        if (i<(array.length-1)){
+            palindrome.push(array[i])
+            .then
+            palindrome.unshift(array[i])
+        }
+        else {
+            palindrome.push(array[i])
+        }
+    }
+    return palindrome
+}
+
+// toPalindrome(arr);
 // const arr2 = arr.toPalindrome();
 // // [1,2,3,2,1]
 
@@ -198,6 +208,13 @@ julia.shoutName(); // Dude! My name is ....
 
 var human = {
     species: "human",
+    create: function(values) {
+        var instance = Object.create(this);
+        Object.keys(values).forEach(function(key) {
+            instance[key] = values[key];
+        })
+        return instance;
+    },
     saySpecies: function() {
         console.log(this.species);
     },
@@ -212,13 +229,15 @@ musician.playInstrument = function() {
 
 }
 
-var will = Object.create(musician);
-will.name = "Will";
-will.instrument = "Drums";
+// var will = Object.create(musician);
+// will.name = "Will";
+// will.instrument = "Drums";
+
+var will = human.create("Will");
 
 // Call functions
 will.sayName();
-will.playInstrument();
+// will.playInstrument();k
 will.saySpecies();
 // Redefine elements
 human.species = "homo sapiens";
