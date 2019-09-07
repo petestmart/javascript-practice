@@ -32,6 +32,7 @@ function concatFooToBar(bar) {
 let palindrome = [];
 const arr = [1, 2, 3];
 const arr2 = [1, 2, 3, 2, 1]
+const arr3 = [1, 2, 3, 2, 1, 2, 3, 2, 1]
 
 function toPalindrome (array) {
     for (let i=array.length-1; i>=0; i--) {
@@ -48,6 +49,8 @@ function toPalindrome (array) {
 }
 
 // toPalindrome(arr);
+// toPalindrome(arr2);
+// toPalindrome(arr3);
 // const arr2 = arr.toPalindrome();
 // // [1,2,3,2,1]
 
@@ -251,8 +254,14 @@ will.saySpecies();
 var b = 1; 
 function outer() {
     var b = 2 
-    function inner() {b++; var b=3; console.log(b)
-    } 
+    function inner() {b++; var b=3; console.log(b)} 
     inner() 
 } 
 outer ();
+
+// OBJECT //
+// Question #1
+// Assuming d is an “empty” object in scope, say: 
+var d = {};
+// …what is accomplished using the following code ? 
+['foo', 'bar'].forEach(function(k) {d[k]= undefined;});
