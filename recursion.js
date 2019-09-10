@@ -21,4 +21,26 @@ function greatComDiv(a, b) {
     return greatComDiv(b, a % b);
 };
 
-// 3) 
+// 3) Write a JavaScript program to get the integers in range (x, y).
+
+let range = function (x, y) {
+    if (y - x === 2 ){
+        return [x+1];
+    }
+    else {
+        let list = range(x, y-1);
+        list.push(y-1)
+        return list;
+    }
+}
+
+// var range = function (start_num, end_num) {
+//     if (end_num - start_num === 2) {
+//         return [start_num + 1];
+//     }
+//     else {
+//         var list = range(start_num, end_num - 1);
+//         list.push(end_num - 1);
+//         return list;
+//     }
+// };
