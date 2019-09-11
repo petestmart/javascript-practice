@@ -265,3 +265,34 @@ outer ();
 var d = {};
 // …what is accomplished using the following code ? 
 ['foo', 'bar'].forEach(function(k) {d[k]= undefined;});
+
+function staircase(n) {
+    // number of spaces: n-1, then n-2, then n-3, then n-4...
+    let height = n;
+
+    for (let i=0; i < height; i++) {
+        let row = "";
+
+        for (let j = 0; j < height; j++) {
+            if (i + j > height-2) {
+                row += "#";
+            }
+            else {
+                row += " ";
+            }
+        }
+        console.log(row);
+    }
+}
+
+// Reverse the array
+reverseArrayBaby = [1, 4, 3, 2]
+
+function reverseArray(a) {
+    let revArr = [];
+    for (let i = a.length-1; i >= 0; i--) {
+        revArr.push((a[i] + " "))
+        console.log(revArr);
+    }
+    console.log(revArr);
+}

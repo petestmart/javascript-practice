@@ -44,3 +44,14 @@ let range = function (x, y) {
 //         return list;
 //     }
 // };
+
+// 4) Write a JavaScript program to compute the sum of an array of integers.
+let sumArray = function(array) {
+    if (array.length === 1) {
+        return array[0];
+    }
+    else {
+        return array.pop() + sumArray(array);
+    }
+};
+
