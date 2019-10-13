@@ -34,11 +34,11 @@ const arr = [1, 2, 3];
 const arr2 = [1, 2, 3, 2, 1]
 const arr3 = [1, 2, 3, 2, 1, 2, 3, 2, 1]
 
-function toPalindrome (array) {
-    for (let i=array.length-1; i>=0; i--) {
-        if (i<(array.length-1)){
+function toPalindrome(array) {
+    for (let i = array.length - 1; i >= 0; i--) {
+        if (i < (array.length - 1)) {
             palindrome.push(array[i])
-            .then
+                .then
             palindrome.unshift(array[i])
         }
         else {
@@ -138,7 +138,7 @@ function reverseWords(str) {
 // This function was copied from the notes in the video (the guy went to a link and grabbed this function from node.js)
 // This is the "inherit" function (ctor, superCtor) : (child, parent)
 // This function allows the child to inherit all of the functionality from the parent
-function inherits(ctor, superCtor) { 
+function inherits(ctor, superCtor) {
     ctor.super_ = superCtor;
     ctor.prototype = Object.create(superCtor.prototype, {
         constructor: {
@@ -151,16 +151,16 @@ function inherits(ctor, superCtor) {
 };
 
 // Constructor/Master Module (Capitalize) - This is our class
-var Person = function(name) {
+var Person = function (name) {
     // this refers to the object that you are creating
     this.name = name;
 }
 
-Person.prototype.sayName = function() {
+Person.prototype.sayName = function () {
     console.log("Hi my name is " + this.name);
 }
 
-Person.prototype.shoutName = function() {
+Person.prototype.shoutName = function () {
     console.log("Hi my name is" + this.name + "!");
 }
 
@@ -173,7 +173,7 @@ var bobby = new Person("bobby");
 john.sayName(); // Hi my name is john
 bobby.sayName(); // Hi my name is bobby
 
-var Musician = function(name, instrument) {
+var Musician = function (name, instrument) {
     //Below is our inherited class (aka Person)
     Musician.super_.call(this, name);
     this.instrument = instrument;
@@ -181,11 +181,11 @@ var Musician = function(name, instrument) {
 
 inherits(Musician, Person);
 
-Musician.prototype.getInstrument = function() {
+Musician.prototype.getInstrument = function () {
     console.log(this.instrument);
 }
 
-Musician.prototype.shoutName = function() {
+Musician.prototype.shoutName = function () {
     console.log("Dude! My name is " + this.name + "!!!!");
 }
 
@@ -211,23 +211,23 @@ julia.shoutName(); // Dude! My name is ....
 
 var human = {
     species: "human",
-    create: function(values) {
+    create: function (values) {
         var instance = Object.create(this);
-        Object.keys(values).forEach(function(key) {
+        Object.keys(values).forEach(function (key) {
             instance[key] = values[key];
         })
         return instance;
     },
-    saySpecies: function() {
+    saySpecies: function () {
         console.log(this.species);
     },
-    sayName: function() {
+    sayName: function () {
         console.log(this.name);
     }
 };
 
 var musician = Object.create(human);
-musician.playInstrument = function() {
+musician.playInstrument = function () {
     console.log("plays..." + this.instrument);
 
 }
@@ -251,30 +251,30 @@ will.saySpecies();
 // Question #1
 // What will the following code output and why?
 
-var b = 1; 
+var b = 1;
 function outer() {
-    var b = 2 
-    function inner() {b++; var b=3; console.log(b)} 
-    inner() 
-} 
-outer ();
+    var b = 2
+    function inner() { b++; var b = 3; console.log(b) }
+    inner()
+}
+outer();
 
 // OBJECT //
 // Question #1
 // Assuming d is an “empty” object in scope, say: 
 var d = {};
 // …what is accomplished using the following code ? 
-['foo', 'bar'].forEach(function(k) {d[k]= undefined;});
+['foo', 'bar'].forEach(function (k) { d[k] = undefined; });
 
 function staircase(n) {
     // number of spaces: n-1, then n-2, then n-3, then n-4...
     let height = n;
 
-    for (let i=0; i < height; i++) {
+    for (let i = 0; i < height; i++) {
         let row = "";
 
         for (let j = 0; j < height; j++) {
-            if (i + j > height-2) {
+            if (i + j > height - 2) {
                 row += "#";
             }
             else {
@@ -290,9 +290,60 @@ reverseArrayBaby = [1, 4, 3, 2]
 
 function reverseArray(a) {
     let revArr = [];
-    for (let i = a.length-1; i >= 0; i--) {
+    for (let i = a.length - 1; i >= 0; i--) {
         revArr.push((a[i] + " "))
         console.log(revArr);
     }
     console.log(revArr);
+}
+
+var x;
+var y;
+
+function pseudoCode(x, y) {
+    // let x = 2437;
+    // let y = 875;
+    if (x === y) {
+        console.log("x===y", x, y)
+    }
+    else if (x > y) {
+        var x = x - y;
+        console.log("x>y", x, y)
+        return pseudoCode(x, y)
+    }
+    else if (x < y) {
+        var y = y - x;
+        console.log("x<y", x, y)
+        return pseudoCode(x, y)
+    }
+}
+
+// console.log("foo" * 3)
+// console.log(2 ** 3)
+
+let s = "I am using HackerRank to improve programming";
+let t = "am HackerRank to improve";
+
+console.log(s.split(" "));
+console.log(t.split(" "));
+
+s.split(" ");
+t.split(" ");
+console.log(s);
+console.log(t);
+
+function missingWords(s, t) {
+    sArray = s.split(" ");
+    tArray = t.split(" ");
+
+    for (let i = 0; i < sArray.length; i++) {
+        for (let j = 0; j < tArray.length; j++) {
+            if (sArray[i] !== tArray[j]) {
+                console.log('Not:', (sArray[i], tArray[j]))
+            }
+            else {
+                console.log('Match:', (sArray[i], tArray[j]))
+            }
+        }
+    }
 }
